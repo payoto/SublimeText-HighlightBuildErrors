@@ -58,7 +58,7 @@ def update_errors_in_view(view):
         display = config["display"] if "display" in config else default_display
         if g_show_errors:
             regions = [e.get_region(view) for e in g_errors if e.file_name == file_name and e.color_index == idx]
-            for e in g_errors if e.file_name == file_name and e.color_index == idx:
+            for e in [e for e in g_errors if e.file_name == file_name and e.color_index == idx]:
                 print(e.message)
 
             view.add_regions(region_key, regions, scope, icon, REGION_FLAGS[display])
