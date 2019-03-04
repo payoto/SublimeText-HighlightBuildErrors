@@ -125,6 +125,7 @@ class ErrorLine:
         self.line = get_line(matchObject);
         self.column = get_column(matchObject)
         self.message = get_message(matchObject)
+        self.print(matchObject)
         if self.message == None: return
         self.color_index = 0
         for config in g_color_configs:
