@@ -147,6 +147,13 @@ class ErrorLine:
         else:
             return view.full_line(point)
 
+    def print(self, matchObject=None):
+        print(self.file_name)
+        print(self.line)
+        print(self.column)
+        print(self.message)
+        print(matchObject)
+
 class ErrorParser:
     def __init__(self, pattern):
         self.regex = re.compile(pattern, re.MULTILINE)
