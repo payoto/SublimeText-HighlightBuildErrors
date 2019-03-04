@@ -125,7 +125,6 @@ class ErrorLine:
         self.line = get_line(matchObject);
         self.column = get_column(matchObject)
         self.message = get_message(matchObject)
-        self.print(matchObject)
         if self.message == None: return
         self.color_index = 0
         for config in g_color_configs:
@@ -134,6 +133,8 @@ class ErrorLine:
             if config["compiled_regex"].search(self.message):
                 break
             self.color_index = self.color_index+1;
+        self.print()
+        
 
     def get_region(self, view):
         if self.line is None:
@@ -148,12 +149,12 @@ class ErrorLine:
         else:
             return view.full_line(point)
 
-    def print(self, matchObject=None):
+    def print(self):
         print(self.file_name)
         print(self.line)
         print(self.column)
         print(self.message)
-        print(matchObject)
+        print(self.color_index)
 
 class ErrorParser:
     def __init__(self, pattern):
